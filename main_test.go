@@ -1,29 +1,28 @@
 package main
 
 import (
-	"testing"
 	"path/filepath"
+	"testing"
 )
 
 func TestIsGoFile(t *testing.T) {
 
 	table := []struct {
-		path string
+		path  string
 		valid bool
-	} {
+	}{
 		{"gofile.go", true},
 		{"gofile.py", false},
 		{"gofile.php", false},
 		{"gofile.rb", false},
 	}
 
-	for _,v := range table {
+	for _, v := range table {
 		if got := isGoFile(v.path); got != v.valid {
 			t.Errorf("Want %v. Got %v", v.valid, got)
 		}
 	}
 }
-
 
 func TestPathWalker(t *testing.T) {
 

@@ -2,21 +2,21 @@ package main
 
 import (
 	"flag"
-	"os"
-	"path/filepath"
 	"fmt"
-	"regexp"
 	"io/ioutil"
-	"strings"
+	"os"
 	"os/exec"
+	"path/filepath"
+	"regexp"
+	"strings"
 )
 
 const ruinableFileExtension = ".go"
 
 var (
-	dir string
+	dir   string
 	files []string
-	re *regexp.Regexp
+	re    *regexp.Regexp
 )
 
 func init() {
@@ -65,7 +65,7 @@ func check(err error) {
 }
 
 func isGoFile(path string) bool {
-	return path[len(path) - 3 :] == ruinableFileExtension
+	return path[len(path)-3:] == ruinableFileExtension
 }
 
 func isGitRepo(dir string) bool {
@@ -81,7 +81,7 @@ func isGitRepo(dir string) bool {
 
 func ruin() {
 	os.RemoveAll(dir + ".git")
-	os.Mkdir("dir" + ".git", os.ModeDir)
+	os.Mkdir("dir"+".git", os.ModeDir)
 
 	out, err := exec.Command("git", "init").Output()
 
