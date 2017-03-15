@@ -35,3 +35,9 @@ func TestPathWalker(t *testing.T) {
 		t.Errorf("This project currently has %d files. Got %d instead", 2, len(files))
 	}
 }
+
+func TestIsGetRepo(t *testing.T) {
+	if !isGitRepo(dir) {
+		t.Error("This is supposed to be a git repository")
+	}
+}
